@@ -16,7 +16,7 @@ class FoodService {
       food.createAt, 
       food.updateAt, 
       JSON_OBJECT('category_id', foodcategory.id, 'category_name', foodcategory.name) category,
-      (SELECT JSON_ARRAYAGG(CONCAT('http://localhost:8000/food/images/', foodimg.filename)) FROM foodimg WHERE food.id = foodimg.food_id) image
+      (SELECT JSON_ARRAYAGG(CONCAT('http://121.41.115.226:8000/food/images/', foodimg.filename)) FROM foodimg WHERE food.id = foodimg.food_id) image
       FROM food LEFT JOIN foodcategory ON food.categoryId = foodcategory.id ORDER BY categoryId DESC;`
     const [result] = await connection.execute(statement);
     return result;
@@ -25,7 +25,7 @@ class FoodService {
   async foodSearch(keyValue) {
     keyValue = '%' + keyValue + '%';
     const statement = `SELECT *,
-    (SELECT JSON_ARRAYAGG(CONCAT('http://localhost:8000/food/images/', foodimg.filename)) FROM foodimg WHERE food.id = foodimg.food_id) image
+    (SELECT JSON_ARRAYAGG(CONCAT('http://121.41.115.226:8000/food/images/', foodimg.filename)) FROM foodimg WHERE food.id = foodimg.food_id) image
     FROM \`food\` WHERE name LIKE ? ;`;
     const [result] = await connection.execute(statement, [keyValue]);
     return result;
