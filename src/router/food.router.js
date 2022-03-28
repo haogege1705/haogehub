@@ -37,5 +37,5 @@ foodRouter.post('/updateFoodCategory', updateFoodCategory);
 
 foodRouter.post('/deleteFoodCategory', deleteFoodCategory);
 
-foodRouter.get('/foodSearch', foodSearch);
+foodRouter.post('/foodSearch', foodSearch);
 module.exports = foodRouter;

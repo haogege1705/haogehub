@@ -24,7 +24,9 @@ class FoodService {
 
   async foodSearch(keyValue) {
     keyValue = '%' + keyValue + '%';
-    const statement = `SELECT * FROM \`food\` WHERE name LIKE ?;`;
+    const statement = `SELECT *,
+    (SELECT JSON_ARRAYAGG(CONCAT('http://localhost:8000/food/images/', foodimg.filename)) FROM foodimg WHERE food.id = foodimg.food_id) image
+    FROM \`food\` WHERE name LIKE ? ;`;
     const [result] = await connection.execute(statement, [keyValue]);
     return result;
   }
