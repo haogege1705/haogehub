@@ -13,8 +13,8 @@ class ShoppingController {
   }
 
   async changeFoodCount(ctx, next) {
-    const {id, count, comments} = ctx.request.body;
-    const result = await shoppingService.changeFoodCount(id, count, comments);
+    const {id, count} = ctx.request.body;
+    const result = await shoppingService.changeFoodCount(id, count);
     ctx.body = result;
   }
 

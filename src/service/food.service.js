@@ -13,6 +13,7 @@ class FoodService {
       food.name,
       food.price, 
       food.description,
+      food.salecount,
       food.createAt, 
       food.updateAt, 
       JSON_OBJECT('category_id', foodcategory.id, 'category_name', foodcategory.name) category,
