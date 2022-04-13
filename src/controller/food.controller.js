@@ -58,9 +58,27 @@ class FoodController {
     ctx.body = result;
   }
 
+  async foodSearchByCategoryId(ctx, next) {
+    const { categoryId } = ctx.request.body;
+    const result = await foodService.foodSearchByCategoryId(categoryId);
+    ctx.body = result;
+  }
+
   async deleteFoodCategory(ctx, next) {
     const { id } = ctx.request.body;
     const result = await foodService.deleteFoodCategory(id);
+    ctx.body = result;
+  }
+
+  async getFoodImage(ctx, next) {
+    const {foodId} = ctx.request.body;
+    const result = await foodService.getFoodImage(foodId);
+    ctx.body = result;
+  }
+
+  async deleteFoodImage(ctx, next) {
+    const {filename} = ctx.request.body;
+    const result = await foodService.deleteFoodImage(filename);
     ctx.body = result;
   }
 

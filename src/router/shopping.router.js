@@ -16,7 +16,7 @@ const {
 
 const shoppingRouter = new Router({prefix: '/shopping'});
 
-shoppingRouter.get('/list', list);
+shoppingRouter.post('/list', list);
 
 shoppingRouter.post('/addShopping', addShopping);
 

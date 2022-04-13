@@ -10,6 +10,6 @@ const { login, success } = require('../controller/auth.controller')
 
 authRouter.post('/', verifyLogin, login);
 
-authRouter.post('/testToken', verifyAuth, success);
+authRouter.post('/testToken', verifyAuth, success)
 
 module.exports = authRouter;

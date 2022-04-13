@@ -2,13 +2,14 @@ const shoppingService = require('../service/shopping.service');
 
 class ShoppingController {
   async list(ctx, next) {
-    const result = await shoppingService.getShoppingList();
+    const {userName} = ctx.request.body;
+    const result = await shoppingService.getShoppingList(userName);
     ctx.body = result;
   }
 
   async addShopping(ctx, next) {
-    const {foodId, count, comments, comfirm} = ctx.request.body;
-    const result = await shoppingService.addShopping(foodId, count, comments, comfirm);
+    const {foodId, count, comments, comfirm, userName} = ctx.request.body;
+    const result = await shoppingService.addShopping(foodId, count, comments, comfirm, userName);
     ctx.body = result;
   }
 
@@ -25,12 +26,14 @@ class ShoppingController {
   }
 
   async getOrderList(ctx, next) {
-    const result = await shoppingService.getOrderList();
+    const {userName} = ctx.request.body;
+    const result = await shoppingService.getOrderList(userName);
     ctx.body = result;
   }
 
   async confirmOrder(ctx, next) {
-    const result = await shoppingService.confirmOrder();
+    const {userName} = ctx.request.body;
+    const result = await shoppingService.confirmOrder(userName);
     ctx.body = result;
   }
 

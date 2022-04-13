@@ -9,7 +9,10 @@ const { list,
   createFoodCategory,
   updateFoodCategory,
   deleteFoodCategory,
-  foodSearch
+  foodSearchByCategoryId,
+  foodSearch,
+  getFoodImage,
+  deleteFoodImage
 } = require('../controller/food.controller');
 
 const {
@@ -37,6 +40,12 @@ foodRouter.post('/updateFoodCategory', updateFoodCategory);
 
 foodRouter.post('/deleteFoodCategory', deleteFoodCategory);
 
+foodRouter.post('/foodSearchByCategoryId', foodSearchByCategoryId);
+
 foodRouter.post('/foodSearch', foodSearch);
+
+foodRouter.post('/getFoodImage', getFoodImage);
+
+foodRouter.post('/deleteFoodImage', deleteFoodImage);
 
 module.exports = foodRouter;
